@@ -12,6 +12,7 @@ export function API({ stack }: StackContext) {
     },
   });
 
+  // Needs to be deployed twice, comment out site during first deploy
   const site = new SvelteKitSite(stack, "site", {
     bind: [MY_CONFIG, api],
     path: "packages/frontend/",
