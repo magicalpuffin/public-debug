@@ -1,17 +1,26 @@
+import { Architecture } from "aws-cdk-lib/aws-lambda";
 import { StackContext, Api, SvelteKitSite } from "sst/constructs";
 
 export function API({ stack }: StackContext) {
   const site = new SvelteKitSite(stack, "site", {
     path: "packages/frontend/",
-    // this still doesn't work even though files are in lambda
+    // installs in lambda and works now
+    // couldn't get arm64 to install
     nodejs: {
       install: [
         "oslo",
         "@node-rs/argon2",
         "@node-rs/argon2-linux-x64-gnu",
+        // "@node-rs/argon2-linux-arm64-gnu",
         "@node-rs/bcrypt",
         "@node-rs/bcrypt-linux-x64-gnu",
+        // "@node-rs/bcrypt-linux-arm64-gnu",
       ],
+    },
+    cdk: {
+      server: {
+        architecture: Architecture.X86_64,
+      },
     },
   });
   const api = new Api(stack, "api", {
