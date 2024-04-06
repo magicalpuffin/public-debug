@@ -2,6 +2,7 @@
   import type { PageData } from "./$types.js";
   export let data: PageData;
   console.log(data);
+  console.log("hello world");
 </script>
 
 <h1>Welcome to SvelteKit</h1>
