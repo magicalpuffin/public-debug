@@ -5,3 +5,12 @@ pages_build_output_dir = ".svelte-kit/cloudflare"
 [[services]]
 binding = "GREET"
 service = "backend-worker"
+
+# Required for production service binding
+# [env.production]
+# compatibility_date = "2024-04-04"
+
+# [[env.production.services]]
+# binding     = "GREET"
+# service     = "backend-worker"
+# environment = "production"
